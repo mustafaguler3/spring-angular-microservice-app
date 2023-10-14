@@ -2,16 +2,19 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ConfigServer" />
         <module name="OrderService" />
         <module name="demo" />
         <module name="demo (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ConfigServer" target="17" />
       <module name="demo" target="11" />
       <module name="demo (1)" target="17" />
       <module name="OrderService" target="17" />
@@ -19,6 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ConfigServer" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="demo (1)" options="-parameters" />
