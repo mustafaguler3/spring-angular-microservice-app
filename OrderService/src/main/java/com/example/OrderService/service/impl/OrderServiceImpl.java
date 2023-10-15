@@ -1,7 +1,9 @@
 package com.example.OrderService.service.impl;
 
 import com.example.OrderService.domain.Order;
+import com.example.OrderService.external.client.PaymentService;
 import com.example.OrderService.external.client.ProductService;
+import com.example.OrderService.external.request.PaymentRequest;
 import com.example.OrderService.model.OrderRequest;
 import com.example.OrderService.repository.OrderRepository;
 import com.example.OrderService.service.OrderService;
@@ -20,6 +22,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository) {
@@ -48,6 +53,23 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         order = orderRepository.save(order);
+
+        log.info("Calling payment service to complete payment");
+        PaymentRequest paymentRequest = PaymentRequest.builder()
+                        .orderId(order.getId())
+                                .paymentMode(orderRequest.getPaymentMode())
+                                        .amount(orderRequest.getTotalAmount())
+                                                .build();
+        String orderStatus = null;
+        try {
+            paymentService.doPayment(paymentRequest);
+            orderStatus = "PLACED";
+        }catch (Exception e){
+            log.error("Error occured in payment,Changing order status");
+            orderStatus = "PAYMENT_FAILED";
+        }
+        order.setOrderStatus(orderStatus);
+        orderRepository.save(order);
 
         log.info("order place successfully with order id :{}",order.getId());
 
