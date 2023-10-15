@@ -1,6 +1,7 @@
 package com.example.OrderService.service.impl;
 
 import com.example.OrderService.domain.Order;
+import com.example.OrderService.external.client.ProductService;
 import com.example.OrderService.model.OrderRequest;
 import com.example.OrderService.repository.OrderRepository;
 import com.example.OrderService.service.OrderService;
@@ -14,7 +15,11 @@ import java.time.Instant;
 @Log4j2
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository) {
@@ -29,6 +34,10 @@ public class OrderServiceImpl implements OrderService {
         //payment service -> payments -> Success -> Complete,else
         //Cancelled
         log.info("Placing order requests: {}",orderRequest);
+
+        productService.reduceQuantity(orderRequest.getProductId(),orderRequest.getQuantity());
+
+        log.info("Creating order with status CREATED ");
 
         Order order = Order.builder()
                 .amount(orderRequest.getTotalAmount())
