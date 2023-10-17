@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:order
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  application:
+    name: ORDER-SERVICE
+    config:
+      import: optional:configserver:http://localhost:9296
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: *
+        client:
+          registration:
+            internal-client:
+              provider: okta
+              authorization-grant-type: client_credentials
+              scope: internal
+              client-id: *
+              client-secret: *
+          provider:
+            okta:
+              issuer-uri: *
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      external:
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        slidingWindowType: COUNT_BASED
+      #eureka:
+      #instance:
+      # prefer-ip-address: true
+      #client:
+      #fetch-registry: true
+      #register-with-eureka: true
+      #service-url:
+      #defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+

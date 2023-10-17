@@ -34,11 +34,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
-
     @Override
     public long placeOrder(OrderRequest orderRequest) {
 

@@ -48,7 +48,13 @@ spring:
                     redis-rate-limiter.replenishRate: 1
                     regis-rate-limiter.burstCapacity: 1
 
-
+okta:
+  oauth2:
+    issuer: *
+    audience: api://default
+    client-id: *
+    client-secret: *
+    scopes: openid, profile, email, offline_access
 
 
 
