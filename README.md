@@ -1,1 +1,0 @@
-used technologies Java, Spring Boot, Spring Cloud, Docker, Kubernetes, Okta, Spring Security, CI/CD, GCP

@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo (1)" />
         <module name="ConfigServer" />
+        <module name="RestaurantService" />
         <module name="OrderService" />
         <module name="demo" />
-        <module name="demo (1)" />
+        <module name="Eureka" />
         <module name="PaymentService" />
         <module name="CloudGateway" />
       </profile>
@@ -20,16 +22,20 @@
       <module name="ConfigServer" target="17" />
       <module name="demo" target="11" />
       <module name="demo (1)" target="17" />
+      <module name="Eureka" target="17" />
       <module name="OrderService" target="17" />
       <module name="PaymentService" target="17" />
+      <module name="RestaurantService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CloudGateway" options="-parameters" />
       <module name="ConfigServer" options="-parameters" />
+      <module name="Eureka" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
+      <module name="RestaurantService" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="demo (1)" options="-parameters" />
     </option>
