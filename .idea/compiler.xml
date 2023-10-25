@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo (1)" />
         <module name="UserService" />
+        <module name="FoodService" />
         <module name="ConfigServer" />
         <module name="RestaurantService" />
         <module name="OrderService" />
@@ -24,6 +25,7 @@
       <module name="demo" target="11" />
       <module name="demo (1)" target="17" />
       <module name="Eureka" target="17" />
+      <module name="FoodService" target="17" />
       <module name="OrderService" target="17" />
       <module name="PaymentService" target="17" />
       <module name="RestaurantService" target="17" />
@@ -35,6 +37,7 @@
       <module name="CloudGateway" options="-parameters" />
       <module name="ConfigServer" options="-parameters" />
       <module name="Eureka" options="-parameters" />
+      <module name="FoodService" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="RestaurantService" options="-parameters" />
