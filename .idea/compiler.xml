@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="demo (1)" />
+        <module name="UserService" />
         <module name="ConfigServer" />
         <module name="RestaurantService" />
         <module name="OrderService" />
@@ -26,6 +27,7 @@
       <module name="OrderService" target="17" />
       <module name="PaymentService" target="17" />
       <module name="RestaurantService" target="17" />
+      <module name="UserService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -36,6 +38,7 @@
       <module name="OrderService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="RestaurantService" options="-parameters" />
+      <module name="UserService" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="demo (1)" options="-parameters" />
     </option>

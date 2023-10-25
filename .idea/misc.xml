@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/CloudGateway/pom.xml" />
         <option value="$PROJECT_DIR$/Eureka/pom.xml" />
         <option value="$PROJECT_DIR$/RestaurantService/pom.xml" />
+        <option value="$PROJECT_DIR$/UserService/pom.xml" />
       </list>
     </option>
   </component>
